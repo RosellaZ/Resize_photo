@@ -5,7 +5,8 @@ import os
 image_dir = "."
 
 # Get a list of all the image files in the directory
-image_files = [f for f in os.listdir(image_dir) if f.endswith('.jpg') or f.endswith('.png')]
+image_files = [f for f in os.listdir(image_dir) if (f.endswith('.jpg') or f.endswith('.png') or f.endswith('.JPG')) and not f.startswith('resized_')]
+# image_files = [f for f in os.listdir(image_dir) if f.endswith('.jpg') or f.endswith('.png') or f.endswith('.JPG')]
 
 # Initialize maximum width and height
 max_width = 5
@@ -41,4 +42,4 @@ for image_file in image_files:
 
         # Save the image
         # new_img.save(os.path.join(image_dir, "resized_" + image_file))
-        new_img.save(os.path.join(image_dir, "resized_" + os.path.splitext(image_file)[0] + ".png"))
+        new_img.save(os.path.join(image_dir, "resized_" + os.path.splitext(image_file)[0] + ".png")) # if you want to keep transparency
